@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import {
   getPostsUserLiked
-} from '../controllers/questionnaireController.js';
+} from '../controllers/postsController.js';
 const router = express.Router();
 
 // routes

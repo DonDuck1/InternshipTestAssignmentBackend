@@ -19,7 +19,7 @@ export async function getPostsUserLiked(req, res) {
   try {
     const params = [req.params.user_id];
     const stmnt = db.prepare(`SELECT * FROM blog_posts WHERE blog_id IN 
-			(SELECT blog_id FROM likes WHERE user_id = ?`);
+			(SELECT blog_id FROM likes WHERE user_id = ?)`);
     const rows = stmnt.all(params);
     const jsonToSend = {
       meta: {

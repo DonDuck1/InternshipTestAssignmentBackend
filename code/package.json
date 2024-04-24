@@ -1,5 +1,5 @@
 {
-  "name": "ex1",
+  "name": "Internship Assignment Backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "dev win": "./node_modules/.bin/nodemon start.js"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",

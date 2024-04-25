@@ -59,7 +59,7 @@ export async function getTotalLikesOfPost(req, res) {
 function addNewPostErrorHandler(body) {
   let errors = [];
 
-  if (!body.email.length > 0) {
+  if (!(body.email.length > 0)) {
     errors.push({
       errorComponent: 'email',
       errorMessage: "The email must not be empty"
@@ -77,19 +77,19 @@ function addNewPostErrorHandler(body) {
           errorMessage: "The email must only include a single '@'"
         })
       } else {
-        if (!body.email.split('@')[0].length > 50) {
+        if (body.email.split('@')[0].length > 50) {
           errors.push({
             errorComponent: 'email',
             errorMessage: "The part in front of the '@' may not be longer than 50 characters"
           })
         }
-        if((/[a-zA-Z]/.test(body.email.split('@')[0]))) {
+        if(!(/[a-zA-Z]/.test(body.email.split('@')[0]))) {
           errors.push({
             errorComponent: 'email',
             errorMessage: "The part in front of the '@' must contain at least one letter"
           })
         }
-        if (!body.email.split('@')[1].length > 30) {
+        if (body.email.split('@')[1].length > 30) {
           errors.push({
             errorComponent: 'email',
             errorMessage: "The part after the '@' may not be longer than 30 characters"
@@ -107,13 +107,13 @@ function addNewPostErrorHandler(body) {
               errorMessage: "The part after the '@' must only include a single '.'"
             })
           }
-          if((/[a-zA-Z]/.test(body.email.split('@')[1].split('.')[0]))) {
+          if(!(/[a-zA-Z]/.test(body.email.split('@')[1].split('.')[0]))) {
             errors.push({
               errorComponent: 'email',
               errorMessage: "The part between the '@' and '.' must contain at least one letter"
             })
           }
-          if((/[a-zA-Z]/.test(body.email.split('@')[1].split('.')[1]))) {
+          if(!(/[a-zA-Z]/.test(body.email.split('@')[1].split('.')[1]))) {
             errors.push({
               errorComponent: 'email',
               errorMessage: "The part between after the last '.' must contain at least one letter"
@@ -124,7 +124,7 @@ function addNewPostErrorHandler(body) {
     }
   }
   
-  if (!body.likes.length > 0) {
+  if (!(body.likes.length > 0)) {
     errors.push({
       errorComponent: 'likes',
       errorMessage: "The likes must not be empty"
@@ -146,7 +146,7 @@ function addNewPostErrorHandler(body) {
   }
   
 
-  if (!body.reposts.length > 0) {
+  if (!(body.reposts.length > 0)) {
     errors.push({
       errorComponent: 'reposts',
       errorMessage: "The reposts must not be empty"
@@ -167,7 +167,7 @@ function addNewPostErrorHandler(body) {
     }
   }
 
-  if (!body.views.length > 0) {
+  if (!(body.views.length > 0)) {
     errors.push({
       errorComponent: 'views',
       errorMessage: "The views must not be empty"

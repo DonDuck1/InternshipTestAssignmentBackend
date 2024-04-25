@@ -2,7 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import {
   getPostsUserLiked,
-  getTotalLikesOfPost
+  getTotalLikesOfPost,
+  addNewPost
 } from '../controllers/postsController.js';
 const router = express.Router();
 
@@ -13,6 +14,6 @@ router.get('/', (req, res, next) => {
 
 router.get('/posts/likedby/:user_id', cors(), getPostsUserLiked);
 router.get('/posts/:blog_id/totallikes', cors(), getTotalLikesOfPost);
-
+router.post('/posts', cors(), addNewPost);
 
 export default router;

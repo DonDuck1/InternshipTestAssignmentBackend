@@ -63,61 +63,61 @@ function addNewPostErrorHandler(body) {
     errors.push({
       errorComponent: 'email',
       errorMessage: "The email must not be empty"
-    })
+    });
   } else {
     if (!body.email.includes('@')) {
       errors.push({
         errorComponent: 'email',
         errorMessage: "The email must include an '@'"
-      })
+      });
     } else {
       if (body.email.split('@').length > 2) {
         errors.push({
           errorComponent: 'email',
           errorMessage: "The email must only include a single '@'"
-        })
+        });
       } else {
         if (body.email.split('@')[0].length > 50) {
           errors.push({
             errorComponent: 'email',
             errorMessage: "The part in front of the '@' may not be longer than 50 characters"
-          })
+          });
         }
-        if(!(/[a-zA-Z]/.test(body.email.split('@')[0]))) {
+        if(!((/\d/.test(body.email.split('@')[0])) || (/[a-zA-Z]/.test(body.email.split('@')[0])))) {
           errors.push({
             errorComponent: 'email',
-            errorMessage: "The part in front of the '@' must contain at least one letter"
-          })
+            errorMessage: "The part in front of the '@' must contain at least one letter or number"
+          });
         }
         if (body.email.split('@')[1].length > 30) {
           errors.push({
             errorComponent: 'email',
             errorMessage: "The part after the '@' may not be longer than 30 characters"
-          })
+          });
         }
         if (!body.email.split('@')[1].includes('.')) {
           errors.push({
             errorComponent: 'email',
             errorMessage: "The part after the '@' must contain one (and only one) '.'"
-          })
+          });
         } else {
           if (body.email.split('@')[1].split('.').length > 2) {
             errors.push({
               errorComponent: 'email',
               errorMessage: "The part after the '@' must only include a single '.'"
-            })
+            });
           }
-          if(!(/[a-zA-Z]/.test(body.email.split('@')[1].split('.')[0]))) {
+          if(!((/\d/.test(body.email.split('@')[1].split('.')[0])) || (/[a-zA-Z]/.test(body.email.split('@')[1].split('.')[0])))) {
             errors.push({
               errorComponent: 'email',
-              errorMessage: "The part between the '@' and '.' must contain at least one letter"
-            })
+              errorMessage: "The part between the '@' and '.' must contain at least one letter or number"
+            });
           }
-          if(!(/[a-zA-Z]/.test(body.email.split('@')[1].split('.')[1]))) {
+          if(!((/\d/.test(body.email.split('@')[1].split('.')[1])) || (/[a-zA-Z]/.test(body.email.split('@')[1].split('.')[1])))) {
             errors.push({
               errorComponent: 'email',
-              errorMessage: "The part between after the last '.' must contain at least one letter"
-            })
+              errorMessage: "The part between after the last '.' must contain at least one letter or number"
+            });
           }
         }
       }
@@ -128,19 +128,19 @@ function addNewPostErrorHandler(body) {
     errors.push({
       errorComponent: 'likes',
       errorMessage: "The likes must not be empty"
-    })
+    });
   } else {
     if (!(/^\d+$/.test(body.likes))) {
       errors.push({
         errorComponent: 'likes',
         errorMessage: "The likes may consist of only numbers"
-      })
+      });
     } else {
       if (Number(body.likes) < 1 || Number(body.likes) > 10) {
         errors.push({
           errorComponent: 'likes',
           errorMessage: "The number of likes must lie between 1 and 10, 1 and 10 included"
-        })
+        });
       }
     }
   }
@@ -150,19 +150,19 @@ function addNewPostErrorHandler(body) {
     errors.push({
       errorComponent: 'reposts',
       errorMessage: "The reposts must not be empty"
-    })
+    });
   } else {
     if (!(/^\d+$/.test(body.reposts))) {
       errors.push({
         errorComponent: 'reposts',
         errorMessage: "The reposts may consist of only numbers"
-      })
+      });
     } else {
       if (Number(body.reposts) < 1 || Number(body.reposts) > 10) {
         errors.push({
           errorComponent: 'reposts',
           errorMessage: "The number of reposts must lie between 1 and 10, 1 and 10 included"
-        })
+        });
       }
     }
   }
@@ -171,19 +171,19 @@ function addNewPostErrorHandler(body) {
     errors.push({
       errorComponent: 'views',
       errorMessage: "The views must not be empty"
-    })
+    });
   } else {
     if (!(/^\d+$/.test(body.views))) {
       errors.push({
         errorComponent: 'views',
         errorMessage: "The views may consist of only numbers"
-      })
+      });
     } else {
       if (Number(body.views) < 1 || Number(body.views) > 10) {
         errors.push({
           errorComponent: 'views',
           errorMessage: "The number of views must lie between 1 and 10, 1 and 10 included"
-        })
+        });
       }
     }
   }

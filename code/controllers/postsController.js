@@ -35,3 +35,23 @@ export async function getPostsUserLiked(req, res) {
     console.log(err);
   }
 }
+
+export async function getTotalLikesOfPost(req, res) {
+  try {
+    const params = [req.params.blog_id];
+    const stmnt = db.prepare(`SELECT SUM(like) FROM (SELECT like FROM likes WHERE blog_id = ?);`);
+    const likes = stmnt.get(params);
+    const jsonToSend = {
+      meta: {
+        name: `Net amount of likes on post with id ${params[0]}`,
+        title: `Net amount of likes on post with id ${params[0]}`,
+        date: getToday(),
+        originalUrl: `${req.originalUrl}`,
+      },
+      data: likes
+    }
+    res.status(200).json(jsonToSend);
+  } catch (err) {
+    console.log(err);
+  }
+}

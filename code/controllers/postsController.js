@@ -106,18 +106,19 @@ function addNewPostErrorHandler(body) {
               errorComponent: 'email',
               errorMessage: "The part after the '@' must only include a single '.'"
             });
-          }
-          if(!((/\d/.test(body.email.split('@')[1].split('.')[0])) || (/[a-zA-Z]/.test(body.email.split('@')[1].split('.')[0])))) {
-            errors.push({
-              errorComponent: 'email',
-              errorMessage: "The part between the '@' and '.' must contain at least one letter or number"
-            });
-          }
-          if(!((/\d/.test(body.email.split('@')[1].split('.')[1])) || (/[a-zA-Z]/.test(body.email.split('@')[1].split('.')[1])))) {
-            errors.push({
-              errorComponent: 'email',
-              errorMessage: "The part between after the last '.' must contain at least one letter or number"
-            });
+          } else {
+            if(!((/\d/.test(body.email.split('@')[1].split('.')[0])) || (/[a-zA-Z]/.test(body.email.split('@')[1].split('.')[0])))) {
+              errors.push({
+                errorComponent: 'email',
+                errorMessage: "The part between the '@' and '.' must contain at least one letter or number"
+              });
+            }
+            if(!((/\d/.test(body.email.split('@')[1].split('.')[1])) || (/[a-zA-Z]/.test(body.email.split('@')[1].split('.')[1])))) {
+              errors.push({
+                errorComponent: 'email',
+                errorMessage: "The part after the last '.' must contain at least one letter or number"
+              });
+            }
           }
         }
       }

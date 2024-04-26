@@ -1,1 +1,2 @@
 # InternshipTestAssignmentBackend
+This is one of the repos used for my internship test assignment, namely the backend. The other repo (the frontend) with a bigger (and better) README can be found here: https://github.com/DonDuck1/InternshipTestAssignment.

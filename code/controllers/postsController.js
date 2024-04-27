@@ -4,6 +4,11 @@ dotenv.config({ path: 'variables.env' });
 
 const db = new Database(process.env.DB_PATH, { verbose: console.log });
 
+/**
+ * Get the current date
+ * 
+ * @returns The current date
+ */
 function getToday() {
   const date = new Date();
   let day = date.getDate();
@@ -15,6 +20,12 @@ function getToday() {
   return currentDate;
 }
 
+/**
+ * Get the posts a certain user liked from the database
+ * 
+ * @param req The GET request with an user_id parameter
+ * @param res The response
+ */
 export async function getPostsUserLiked(req, res) {
   try {
     const params = [req.params.user_id];
@@ -36,6 +47,12 @@ export async function getPostsUserLiked(req, res) {
   }
 }
 
+/**
+ * Get the total likes of a certain post
+ * 
+ * @param req The GET request with an blog_id parameter
+ * @param res The response
+ */
 export async function getTotalLikesOfPost(req, res) {
   try {
     const params = [req.params.blog_id];
@@ -56,6 +73,13 @@ export async function getTotalLikesOfPost(req, res) {
   }
 }
 
+/**
+ * The error handler for adding a new post
+ * 
+ * @param body The body of the POST request, an object with variables "email", "likes", "reposts" and "views"
+ * 
+ * @returns The errors in an array
+ */
 function addNewPostErrorHandler(body) {
   let errors = [];
 
@@ -192,6 +216,12 @@ function addNewPostErrorHandler(body) {
   return errors;
 }
 
+/**
+ * Function to add a new post
+ * 
+ * @param req The POST request
+ * @param res The response
+ */
 export async function addNewPost(req, res) {
   const errors = addNewPostErrorHandler(req.body);
 
